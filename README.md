@@ -87,11 +87,13 @@ echo "  - job_name: 'node_exporter'
       - targets: ['localhost:9100']" | sudo tee -a /etc/prometheus/prometheus.yml > /dev/null
 
 sudo service prometheus restart
+cat /etc/prometheus/prometheus.yml
 ```
 
 # Install MlFlow
 
 ```
+exit
 sudo yum update -y
 sudo yum install python3-pip
 sudo pip3 install pipenv
