@@ -47,6 +47,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/mlrepo:latest
-            docker stop mlapp || true # In case the container doesn't exist yet
-            docker rm mlapp || true
+            docker stop mlrepo || true # In case the container doesn't exist yet
+            docker rm mlrepo || true
             docker run -d -p 80:8005 --name mlapp ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/mlrepo:latest
