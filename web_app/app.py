@@ -54,7 +54,7 @@ request_time = Summary('request_processing_seconds', 'Time spent processing requ
 def metrics():
     return request_time.collect()
 
-mlflow.set_tracking_uri("http://16.170.141.250:5000")
+mlflow.set_tracking_uri("http://13.60.235.65:5000")
 # # mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("Loan_Prediction")
 
@@ -65,7 +65,7 @@ loss_gauge = Gauge('mlflow_experiment_loss', 'Loss of MLflow experiment')
 @app.route('/mlflow_metrics')
 def mlflow_metrics():
     """Expose MLflow experiment metrics for Prometheus."""
-    mlflow.set_tracking_uri("http://16.170.141.250:5000")
+    mlflow.set_tracking_uri("http://13.60.235.65:5000")
     experiment_id = "0"  # Set your experiment ID
 
     # Fetch experiment runs

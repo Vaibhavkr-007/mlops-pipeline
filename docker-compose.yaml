@@ -9,7 +9,7 @@ services:
       - 8005:8005
     networks:
       example-network:
-        ipv4_address: 51.20.51.10
+        ipv4_address: 13.60.235.10
 
   prometheus:
     image: prom/prometheus:latest
@@ -23,7 +23,7 @@ services:
       - "--config.file=/etc/prometheus/prometheus.yml"
     networks:
       example-network:
-        ipv4_address: 51.20.51.11
+        ipv4_address: 13.60.235.11
 
   grafana:
     image: grafana/grafana:latest
@@ -40,7 +40,7 @@ services:
       - ./config.monitoring
     networks:
       example-network:
-        ipv4_address: 51.20.51.12
+        ipv4_address: 13.60.235.12
 
 networks:
   example-network:
@@ -48,4 +48,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 51.20.51.0/24
+        - subnet: 13.60.235.0/24
