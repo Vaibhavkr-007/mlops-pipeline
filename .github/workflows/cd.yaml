@@ -20,7 +20,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Build Docker Image
-        run: docker build -t mlapp_image:latest .
+        run: docker build -t mlrepo:latest .
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@0e613a0980cbf65ed5b322eb7a1e075d28913a83
