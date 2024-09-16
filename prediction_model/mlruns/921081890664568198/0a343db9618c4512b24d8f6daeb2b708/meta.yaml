@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/0a343db9618c4512b24d8f6daeb2b708/artifacts
+end_time: 1725040182720
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 0a343db9618c4512b24d8f6daeb2b708
+run_name: bald-goat-70
+run_uuid: 0a343db9618c4512b24d8f6daeb2b708
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725040182063
+status: 4
+tags: []
+user_id: Vaibhavkr_07

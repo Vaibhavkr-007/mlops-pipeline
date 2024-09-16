@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/0040df8651c3490aab54e99e77636de4/artifacts
+end_time: 1725039677419
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 0040df8651c3490aab54e99e77636de4
+run_name: charming-ant-199
+run_uuid: 0040df8651c3490aab54e99e77636de4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725039666035
+status: 3
+tags: []
+user_id: Vaibhavkr_07

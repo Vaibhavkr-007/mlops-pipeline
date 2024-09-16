@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/0/fa36b4dd61264a26ae0255104c45d0d8/artifacts
+end_time: 1724577110470
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fa36b4dd61264a26ae0255104c45d0d8
+run_name: blushing-robin-716
+run_uuid: fa36b4dd61264a26ae0255104c45d0d8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724577101994
+status: 3
+tags: []
+user_id: Vaibhavkr_07

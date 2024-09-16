@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/6ccdea850b924158ac3c56224f73580d/artifacts
+end_time: 1725038770989
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 6ccdea850b924158ac3c56224f73580d
+run_name: enthused-wolf-883
+run_uuid: 6ccdea850b924158ac3c56224f73580d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725038770535
+status: 4
+tags: []
+user_id: Vaibhavkr_07

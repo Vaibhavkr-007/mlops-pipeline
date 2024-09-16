@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/0/dddaf5f41d0643c49f42c7ebbbbcaa3d/artifacts
+end_time: 1724576884852
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dddaf5f41d0643c49f42c7ebbbbcaa3d
+run_name: valuable-rook-459
+run_uuid: dddaf5f41d0643c49f42c7ebbbbcaa3d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724576883950
+status: 4
+tags: []
+user_id: Vaibhavkr_07

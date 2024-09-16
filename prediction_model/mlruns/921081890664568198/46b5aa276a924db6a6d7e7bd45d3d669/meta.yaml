@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/46b5aa276a924db6a6d7e7bd45d3d669/artifacts
+end_time: 1725040537656
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 46b5aa276a924db6a6d7e7bd45d3d669
+run_name: illustrious-wren-503
+run_uuid: 46b5aa276a924db6a6d7e7bd45d3d669
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725040537452
+status: 4
+tags: []
+user_id: Vaibhavkr_07

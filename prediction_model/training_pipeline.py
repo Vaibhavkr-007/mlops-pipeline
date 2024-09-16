@@ -19,7 +19,7 @@ import prediction_model.pipeline as pipe
 import sys
 from prediction_model.model.evaluation import eval_metrics
 
-mlflow.set_tracking_uri("http://13.60.235.65:5000")
+mlflow.set_tracking_uri("http://51.20.51.0:5000")
 mlflow.set_experiment("Loan_Prediction_Model")
 
 def perform_training():

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/0/cbf58f0230314ea99267561c51d9ba2d/artifacts
+end_time: 1724523241970
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cbf58f0230314ea99267561c51d9ba2d
+run_name: painted-hen-698
+run_uuid: cbf58f0230314ea99267561c51d9ba2d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724523234974
+status: 3
+tags: []
+user_id: Vaibhavkr_07

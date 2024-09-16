@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1725043363160
+current_stage: Production
+description: ''
+last_updated_timestamp: 1725043684374
+name: Prediction_LR
+run_id: 010d326ddc434520b7f8093df083d716
+run_link: ''
+source: mlflow-artifacts:/921081890664568198/010d326ddc434520b7f8093df083d716/artifacts/Logistic
+  Regression
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/921081890664568198/010d326ddc434520b7f8093df083d716/artifacts/Logistic
+  Regression
+user_id: null
+version: 1

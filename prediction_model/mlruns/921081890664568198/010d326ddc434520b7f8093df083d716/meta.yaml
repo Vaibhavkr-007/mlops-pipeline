@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/010d326ddc434520b7f8093df083d716/artifacts
+end_time: 1725041972927
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 010d326ddc434520b7f8093df083d716
+run_name: marvelous-shrimp-560
+run_uuid: 010d326ddc434520b7f8093df083d716
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725041960890
+status: 3
+tags: []
+user_id: Vaibhavkr_07

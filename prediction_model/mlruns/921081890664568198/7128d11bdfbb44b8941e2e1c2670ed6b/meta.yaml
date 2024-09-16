@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/7128d11bdfbb44b8941e2e1c2670ed6b/artifacts
+end_time: 1725040576885
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 7128d11bdfbb44b8941e2e1c2670ed6b
+run_name: traveling-wasp-809
+run_uuid: 7128d11bdfbb44b8941e2e1c2670ed6b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725040576222
+status: 4
+tags: []
+user_id: Vaibhavkr_07

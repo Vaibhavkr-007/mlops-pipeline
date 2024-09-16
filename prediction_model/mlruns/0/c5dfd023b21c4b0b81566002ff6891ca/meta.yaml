@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/0/c5dfd023b21c4b0b81566002ff6891ca/artifacts
+end_time: 1724511777501
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c5dfd023b21c4b0b81566002ff6891ca
+run_name: shivering-ant-620
+run_uuid: c5dfd023b21c4b0b81566002ff6891ca
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724511770557
+status: 4
+tags: []
+user_id: Vaibhavkr_07

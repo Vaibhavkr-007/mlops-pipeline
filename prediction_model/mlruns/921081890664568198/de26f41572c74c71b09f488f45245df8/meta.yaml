@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/de26f41572c74c71b09f488f45245df8/artifacts
+end_time: 1725041877930
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: de26f41572c74c71b09f488f45245df8
+run_name: receptive-toad-187
+run_uuid: de26f41572c74c71b09f488f45245df8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725041877288
+status: 4
+tags: []
+user_id: Vaibhavkr_07

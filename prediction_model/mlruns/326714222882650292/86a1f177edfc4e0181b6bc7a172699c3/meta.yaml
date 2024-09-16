@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/326714222882650292/86a1f177edfc4e0181b6bc7a172699c3/artifacts
+end_time: 1724578380505
+entry_point_name: ''
+experiment_id: '326714222882650292'
+lifecycle_stage: active
+run_id: 86a1f177edfc4e0181b6bc7a172699c3
+run_name: rumbling-ape-379
+run_uuid: 86a1f177edfc4e0181b6bc7a172699c3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724578380447
+status: 3
+tags: []
+user_id: Vaibhavkr_07

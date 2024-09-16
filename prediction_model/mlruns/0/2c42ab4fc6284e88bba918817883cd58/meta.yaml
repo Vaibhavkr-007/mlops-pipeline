@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/0/2c42ab4fc6284e88bba918817883cd58/artifacts
+end_time: 1724522059775
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2c42ab4fc6284e88bba918817883cd58
+run_name: orderly-elk-600
+run_uuid: 2c42ab4fc6284e88bba918817883cd58
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724522051863
+status: 3
+tags: []
+user_id: Vaibhavkr_07

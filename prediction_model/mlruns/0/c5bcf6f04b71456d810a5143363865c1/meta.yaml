@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/0/c5bcf6f04b71456d810a5143363865c1/artifacts
+end_time: 1724576968603
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c5bcf6f04b71456d810a5143363865c1
+run_name: skillful-panda-611
+run_uuid: c5bcf6f04b71456d810a5143363865c1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724576968203
+status: 4
+tags: []
+user_id: Vaibhavkr_07

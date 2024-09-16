@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/0df21c42fbe848f3bca7f497d6b84fc8/artifacts
+end_time: 1725038739811
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 0df21c42fbe848f3bca7f497d6b84fc8
+run_name: nimble-snail-966
+run_uuid: 0df21c42fbe848f3bca7f497d6b84fc8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725038738837
+status: 4
+tags: []
+user_id: Vaibhavkr_07

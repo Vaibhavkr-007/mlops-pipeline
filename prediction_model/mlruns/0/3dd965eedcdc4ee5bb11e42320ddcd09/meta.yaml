@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Vaibhavkr_07/OneDrive/Desktop/Phoenix/MLOps/Proj2/Packaging_ML_Model/prediction_model/mlruns/0/3dd965eedcdc4ee5bb11e42320ddcd09/artifacts
+end_time: 1724577464982
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3dd965eedcdc4ee5bb11e42320ddcd09
+run_name: righteous-lynx-930
+run_uuid: 3dd965eedcdc4ee5bb11e42320ddcd09
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1724577460548
+status: 3
+tags: []
+user_id: Vaibhavkr_07

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/921081890664568198/87a59de260cc4fa1921e252f719883ae/artifacts
+end_time: 1725041116991
+entry_point_name: ''
+experiment_id: '921081890664568198'
+lifecycle_stage: active
+run_id: 87a59de260cc4fa1921e252f719883ae
+run_name: adorable-crow-43
+run_uuid: 87a59de260cc4fa1921e252f719883ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725041116326
+status: 4
+tags: []
+user_id: Vaibhavkr_07

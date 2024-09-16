@@ -1,0 +1,33 @@
+artifact_path: Logistic Regression
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.9.18
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.2.2
+mlflow_version: 2.15.1
+model_size_bytes: 1555
+model_uuid: b151a078944a427392a618affb35d261
+run_id: 47298fde7eac4cf6935a1fea673f6311
+signature:
+  inputs: '[{"type": "long", "name": "no_of_dependents", "required": true}, {"type":
+    "string", "name": "education", "required": true}, {"type": "string", "name": "self_employed",
+    "required": true}, {"type": "long", "name": "income_annum", "required": true},
+    {"type": "long", "name": "loan_amount", "required": true}, {"type": "long", "name":
+    "loan_term", "required": true}, {"type": "long", "name": "cibil_score", "required":
+    true}, {"type": "long", "name": "residential_assets_value", "required": true},
+    {"type": "long", "name": "commercial_assets_value", "required": true}, {"type":
+    "long", "name": "luxury_assets_value", "required": true}, {"type": "long", "name":
+    "bank_asset_value", "required": true}, {"type": "long", "name": "total_assets_value",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2024-08-25 09:56:47.345968'
