@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from flask_pydantic import validate
-from flask import Flask,render_template,request, jsonify
+from flask import Flask,render_template,request, jsonify, Response
 import pandas as pd
 import sys
 import os
@@ -59,8 +59,8 @@ mlflow.set_tracking_uri("http://16.171.54.43:5000")
 mlflow.set_experiment("Loan_Prediction")
 
 # Define Prometheus Gauges for MLflow metrics
-accuracy_gauge = Gauge('mlflow_experiment_accuracy', 'Accuracy of MLflow experiment')
-loss_gauge = Gauge('mlflow_experiment_loss', 'Loss of MLflow experiment')
+accuracy_gauge = Gauge('mlflow_accuracy', 'MLflow experiment accuracy')
+loss_gauge = Gauge('mlflow_loss', 'MLflow experiment loss')
 
 @app.route('/mlflow_metrics')
 def mlflow_metrics():
@@ -68,17 +68,21 @@ def mlflow_metrics():
     mlflow.set_tracking_uri("http://16.171.54.43:5000")
     experiment_id = "0"  # Set your experiment ID
 
-    # Fetch experiment runs
+    # Fetch the latest experiment run
     runs = mlflow.search_runs(experiment_ids=[experiment_id])
-    latest_run = runs.iloc[0]  # Get the latest run
+    if runs.empty:
+        return "No runs found", 404
+
+    latest_run = runs.iloc[0]
 
     # Update Prometheus gauges with MLflow metrics
-    accuracy = latest_run['metrics.accuracy'] if 'metrics.accuracy' in latest_run else 0
-    loss = latest_run['metrics.loss'] if 'metrics.loss' in latest_run else 0
+    accuracy = latest_run.get('metrics.accuracy', 0)
+    loss = latest_run.get('metrics.loss', 0)
     accuracy_gauge.set(accuracy)
     loss_gauge.set(loss)
 
-    return generate_latest()  # Return metrics in Prometheus format
+    # Return metrics in Prometheus format
+    return Response(generate_latest(), mimetype="text/plain")
 
 @app.route('/predict',methods=['POST'])
 def predict():

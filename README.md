@@ -81,14 +81,6 @@ chmod u=rwx,g=r,o=r node_exporter.sh
 
 sudo yum install vim -y
 sudo update-alternatives --config vi
-
-echo "  - job_name: 'node_exporter'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['localhost:9100']" | sudo tee -a /etc/prometheus/prometheus.yml > /dev/null
-
-sudo service prometheus restart
-cat /etc/prometheus/prometheus.yml
 ```
 
 # Install MlFlow
@@ -114,8 +106,14 @@ aws configure
 #Finally
 mlflow server -h 0.0.0.0 --default-artifact-root s3://s3-bucket-mlflow
 
+mlflow server \
+  --backend-store-uri http://ec2-16-171-54-43.eu-north-1.compute.amazonaws.com:5000 \
+  --default-artifact-root s3://s3-bucket-mlflow \
+  --host 0.0.0.0 \
+  --port 5000
+
 #set uri in your local terminal and in your code
-export MLFLOW_TRACKING_URI=http://ec2-54-147-36-34.compute-1.amazonaws.com:5000/
+export MLFLOW_TRACKING_URI=http://ec2-16-171-54-43.eu-north-1.compute.amazonaws.com:5000/
 ```
 
 ```
@@ -123,4 +121,32 @@ localhost:9090 --> Prometheus
 localhost:3000 --> grafana
 localhost:9100 --> node exporter
 localhost:5000 --> Mlflow
+```
+
+# Add http endpoints to prometheus
+
+```
+echo "  - job_name: 'node_exporter'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9100']" | sudo tee -a /etc/prometheus/prometheus.yml > /dev/null
+```
+
+```
+echo "  - job_name: 'mlflow'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['localhost:5000']" | sudo tee -a /etc/prometheus/prometheus.yml > /dev/null
+```
+
+```
+echo "  - job_name: 'mlapp'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['localhost:80']" | sudo tee -a /etc/prometheus/prometheus.yml > /dev/null
+```
+
+```
+sudo service prometheus restart
+cat /etc/prometheus/prometheus.yml
 ```
