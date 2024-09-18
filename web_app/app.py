@@ -147,8 +147,9 @@ from prometheus_flask_exporter import PrometheusMetrics
 import mlflow
 from prometheus_client import start_http_server, Summary, Gauge, generate_latest
 from mlflow.tracking import MlflowClient
+from threading import Thread
 
-# Adding the below path to avoid module not found error
+# # Adding the below path to avoid module not found error
 PACKAGE_ROOT = Path(os.path.abspath(os.path.dirname(__file__))).parent
 sys.path.append(str(PACKAGE_ROOT))
 
@@ -159,24 +160,40 @@ pipeline_path = PACKAGE_ROOT / "prediction_model" / "Trained_Models" / config.MO
 classification_pipeline = load_pipeline(pipeline_path)
 
 app = Flask(__name__)
-metrics = PrometheusMetrics(app)
 
-# Expose a summary metric for request processing time
+# Expose metrics on 8005 for the ML app
+metrics = PrometheusMetrics(app, path="/metrics")
+
+# Start the MLflow tracking URI
+mlflow.set_tracking_uri("http://16.171.54.43:5000")
+mlflow.set_experiment("Loan_Prediction")
+
+# Expose a summary metric
 request_time = Summary('request_processing_seconds', 'Time spent processing request')
 
-# Gauge for tracking predictions
-prediction_gauge = Gauge('loan_prediction_result', 'Result of loan prediction (1 = Approved, 0 = Rejected)')
+# Function to expose MLflow metrics on port 5000/metrics
+def start_mlflow_metrics_server():
+    start_http_server(5000)
+    while True:
+        pass  # Keep the thread running
+
+# Start MLflow metrics server in a separate thread
+Thread(target=start_mlflow_metrics_server).start()
 
 def transform_to_integers(data):
+    # List of columns to convert to integers
     columns_to_convert = [
         'no_of_dependents', 'income_annum', 'loan_amount', 'loan_term', 
         'cibil_score', 'residential_assets_value', 'commercial_assets_value', 
-        'luxury_assets_value', 'bank_asset_value'
+        'luxury_assets_value', 'bank_asset_value' 
     ]
+
     for col in columns_to_convert:
         try:
+            # Attempt to convert the value to an integer
             data[col] = int(data[col])
         except ValueError:
+            # Handle the case where conversion fails (e.g., non-numeric value)
             print(f"Warning: Could not convert '{col}' to integer. Value: {data[col]}")
 
     return data
@@ -185,22 +202,15 @@ def transform_to_integers(data):
 def home():
     return render_template('homepage.html')
 
-# Endpoint to expose metrics
-@app.route('/metrics')
-def metrics_view():
-    return Response(generate_latest(), mimetype="text/plain")
-
-mlflow.set_tracking_uri("http://16.171.54.43:5000")
-mlflow.set_experiment("Loan_Prediction")
-
 @app.route('/predict', methods=['POST'])
-@request_time.time()  # Decorator to track request processing time
 def predict():
     if request.method == 'POST':
         request_data = dict(request.form)
         print(request_data)
         request_data = {k: v for k, v in request_data.items()}
+        # Format numeric columns
         request_data = transform_to_integers(request_data)
+        print(request_data)
         data = pd.DataFrame([request_data])
         print(data)
 
@@ -209,16 +219,15 @@ def predict():
 
             # Perform prediction
             pred = classification_pipeline.predict(data)
-            print(f"prediction is {pred}")
+            print(f"Prediction is {pred}")
 
             # Log the prediction
             mlflow.log_param("prediction_result", int(pred[0]))
-            prediction_gauge.set(int(pred[0]))  # Set the Prometheus gauge for the prediction result
 
             if int(pred[0]) == 1:
-                result = "Congratulations! your loan request is approved"
+                result = "Congratulations! Your loan request is approved"
             else:
-                result = "Sorry! your loan request is rejected"
+                result = "Sorry! Your loan request is rejected"
 
         return render_template('homepage.html', prediction=result)
 
@@ -231,7 +240,5 @@ def not_found(error):
     return "404: Page not found", 404
 
 if __name__ == '__main__':
-    # Start Prometheus server for scraping at port 8006
-    start_http_server(8006)
+    start_http_server(8005)  # Expose ML app metrics on 8005
     app.run(host='0.0.0.0', port=8005)
-
