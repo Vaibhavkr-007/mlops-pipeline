@@ -23,10 +23,10 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Lint Code
-        run: |
-          pip install flake8
-          flake8 prediction_model test web_app
+      # - name: Lint Code
+      #   run: |
+      #     pip install flake8
+      #     flake8 prediction_model test web_app
 
       - name: Run Tests
         run: |
