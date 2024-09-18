@@ -20,6 +20,7 @@ import sys
 from prediction_model.model.evaluation import eval_metrics
 
 mlflow.set_tracking_uri("http://16.171.54.43:5000")
+# mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("Loan_Prediction_Model")
 
 def perform_training():

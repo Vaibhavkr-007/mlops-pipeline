@@ -1,5 +1,58 @@
 # An end-to-end MLOps project.
 
+## File setup ---
+
+```
+        ├── .github
+        │   └── workflows
+        │       └── ci.yaml
+        │       └── cd.yaml
+        ├── prediction_model
+        │   ├── config
+        │   │   ├── config.py
+        │   │   └── __init__.py
+        │   ├── model
+        │   │   ├── __init__.py
+        │   │   ├── evaluation.py
+        │   │   └── model_dev.py
+        │   ├── datasets
+        │   │   ├── __init__.py
+        │   │   ├── test.csv
+        │   │   └── train.csv
+        │   ├── __init__.py
+        │   ├── pipeline.py
+        │   ├── predict.py
+        │   ├── processing
+        │   │   ├── data_handling.py
+        │   │   ├── __init__.py
+        │   │   └── preprocessing.py
+        │   ├── trained_models
+        │   │   ├── classification.pkl
+        │   │   └── __init__.py
+        │   ├── training_pipeline.py
+        │   └── VERSION
+        ├── test
+        │    ├── pytest.ini
+        │    └── test_prediction.py
+        ├── web_app
+        │   ├── static
+        │   │   └── styles.css
+        │   ├── templates
+        │   │   └── index.html
+        │   └── app.py
+        ├── config.monitoring
+        ├── datasource.yaml
+        ├── docker-compose.yaml
+        ├── Dockerfile
+        ├── graphana-mlapp-dashboard.json
+        ├── graphana-node_exporter-dashboard.json
+        ├── MANIFEST.in
+        ├── prometheus.yaml
+        ├── README.md
+        ├── requirements.txt
+        ├── setup.py
+```
+
 ### MLflow
 
 1. Manages the entire machine learning lifecycle.
