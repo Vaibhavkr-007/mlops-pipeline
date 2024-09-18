@@ -173,7 +173,7 @@ def prometheus_metrics():
 @app.route('/mlflow_metrics')
 def mlflow_metrics():
     """Expose MLflow experiment metrics for Prometheus."""
-    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    mlflow.set_tracking_uri("http://16.171.54.43:5000")
     experiment_id = "0"  # Set your experiment ID
 
     # Fetch experiment runs
