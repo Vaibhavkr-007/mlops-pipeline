@@ -7,6 +7,7 @@ from pathlib import Path
 from prometheus_flask_exporter import PrometheusMetrics
 import mlflow
 from prometheus_client import start_http_server, Summary, Gauge, generate_latest
+from mlflow.tracking import MlflowClient
 
 # # Adding the below path to avoid module not found error
 PACKAGE_ROOT = Path(os.path.abspath(os.path.dirname(__file__))).parent
@@ -55,15 +56,15 @@ mlflow.set_tracking_uri("http://16.171.54.43:5000")
 # # mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("Loan_Prediction")
 
-# Prometheus Gauge for tracking artifacts
-artifact_gauge = Gauge('mlflow_artifact_size', 'Size of MLflow artifacts')
+# Prometheus Gauge for tracking artifact size
+artifact_gauge = Gauge('mlflow_artifact_size', 'Size of MLflow artifacts in bytes')
 
 @app.route('/mlflow_metrics', methods=['POST'])
 def mlflow_metrics():
     """Expose MLflow experiment artifacts for Prometheus via POST request."""
     mlflow.set_tracking_uri("http://16.171.54.43:5000")
 
-    # Parse experiment ID and run details from the request body (assuming JSON)
+    # Parse the experiment ID from the request body
     request_data = request.get_json()
     experiment_id = request_data.get("experiment_id", "0")
 
@@ -75,12 +76,12 @@ def mlflow_metrics():
     latest_run_id = runs.iloc[0].run_id
 
     # Fetch artifacts from the latest run
-    artifact_uri = mlflow.get_artifact_uri(run_id=latest_run_id)
-    client = mlflow.tracking.MlflowClient()
+    client = MlflowClient()
+    artifact_uri = client.get_artifact_uri(run_id=latest_run_id)
     artifacts = client.list_artifacts(latest_run_id)
 
-    # Assuming you want to track the size of the artifacts
-    total_size = sum([artifact.file_size for artifact in artifacts if artifact.is_dir is False])
+    # Track the size of the artifacts
+    total_size = sum(artifact.file_size for artifact in artifacts if not artifact.is_dir)
     artifact_gauge.set(total_size)
 
     # Return metrics in Prometheus format
