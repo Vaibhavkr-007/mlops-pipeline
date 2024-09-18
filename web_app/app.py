@@ -56,34 +56,6 @@ mlflow.set_tracking_uri("http://16.171.54.43:5000")
 # # mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("Loan_Prediction")
 
-# Initialize Prometheus metrics
-registry = CollectorRegistry()
-run_duration_gauge = Gauge('mlflow_run_duration_seconds', 'Duration of MLflow runs', ['run_id'], registry=registry)
-run_status_gauge = Gauge('mlflow_run_status', 'Status of MLflow runs', ['run_id', 'status'], registry=registry)
-
-def get_mlflow_metrics():
-    # Fetch MLflow run data
-    client = mlflow.tracking.MlflowClient()
-    runs = client.search_runs(experiment_ids=['0'])  # Adjust experiment IDs as needed
-    
-    for run in runs:
-        run_id = run.info.run_id
-        start_time = run.info.start_time / 1000.0  # Convert milliseconds to seconds
-        end_time = run.info.end_time / 1000.0
-        duration = end_time - start_time
-        
-        # Set the run duration metric
-        run_duration_gauge.labels(run_id=run_id).set(duration)
-        
-        # Set the run status metric
-        status = run.info.status
-        run_status_gauge.labels(run_id=run_id, status=status).set(1 if status == 'FINISHED' else 0)
-
-@app.route('/mlflow_metrics')
-def metrics():
-    get_mlflow_metrics()
-    return Response(generate_latest(registry), mimetype='text/plain')
-
 @app.route('/predict',methods=['POST'])
 def predict():
     if request.method == 'POST':
