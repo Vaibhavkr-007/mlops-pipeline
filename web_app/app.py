@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from flask import Flask,render_template,request, Response
+from flask import Flask,render_template,request, Response, jsonify
 import pandas as pd
 import sys
 import os
@@ -55,28 +55,33 @@ mlflow.set_tracking_uri("http://16.171.54.43:5000")
 # # mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("Loan_Prediction")
 
-# Define Prometheus Gauges for MLflow metrics
-accuracy_gauge = Gauge('mlflow_accuracy', 'MLflow experiment accuracy')
-loss_gauge = Gauge('mlflow_loss', 'MLflow experiment loss')
+# Prometheus Gauge for tracking artifacts
+artifact_gauge = Gauge('mlflow_artifact_size', 'Size of MLflow artifacts')
 
-@app.route('/mlflow_metrics')
+@app.route('/mlflow_metrics', methods=['POST'])
 def mlflow_metrics():
-    """Expose MLflow experiment metrics for Prometheus."""
+    """Expose MLflow experiment artifacts for Prometheus via POST request."""
     mlflow.set_tracking_uri("http://16.171.54.43:5000")
-    experiment_id = "0"  # Set your experiment ID
+
+    # Parse experiment ID and run details from the request body (assuming JSON)
+    request_data = request.get_json()
+    experiment_id = request_data.get("experiment_id", "0")
 
     # Fetch the latest experiment run
     runs = mlflow.search_runs(experiment_ids=[experiment_id])
     if runs.empty:
         return "No runs found", 404
 
-    latest_run = runs.iloc[0]
+    latest_run_id = runs.iloc[0].run_id
 
-    # Update Prometheus gauges with MLflow metrics
-    accuracy = latest_run.get('metrics.accuracy', 0)
-    loss = latest_run.get('metrics.loss', 0)
-    accuracy_gauge.set(accuracy)
-    loss_gauge.set(loss)
+    # Fetch artifacts from the latest run
+    artifact_uri = mlflow.get_artifact_uri(run_id=latest_run_id)
+    client = mlflow.tracking.MlflowClient()
+    artifacts = client.list_artifacts(latest_run_id)
+
+    # Assuming you want to track the size of the artifacts
+    total_size = sum([artifact.file_size for artifact in artifacts if artifact.is_dir is False])
+    artifact_gauge.set(total_size)
 
     # Return metrics in Prometheus format
     return Response(generate_latest(), mimetype="text/plain")

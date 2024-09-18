@@ -106,12 +106,6 @@ aws configure
 #Finally
 mlflow server -h 0.0.0.0 --default-artifact-root s3://s3-bucket-mlflow
 
-mlflow server \
-  --backend-store-uri http://ec2-16-171-54-43.eu-north-1.compute.amazonaws.com:5000 \
-  --default-artifact-root s3://s3-bucket-mlflow \
-  --host 0.0.0.0 \
-  --port 5000
-
 #set uri in your local terminal and in your code
 export MLFLOW_TRACKING_URI=http://ec2-16-171-54-43.eu-north-1.compute.amazonaws.com:5000/
 ```
