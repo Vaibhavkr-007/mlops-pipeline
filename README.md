@@ -1,5 +1,13 @@
 # An end-to-end MLOps project.
 
+# Automated Loan Approval System with CI/CD
+
+This project is an Automated Loan Approval System designed to streamline the loan approval process using machine learning. It integrates a full CI/CD pipeline to automate model training, deployment, and monitoring. The system utilizes a logistic regression model for predicting loan approvals and leverages MLflow for experiment tracking and model versioning.
+
+The application is built as a Flask-based API for model inference and is deployed using Docker on AWS. Real-time monitoring and performance visualization are achieved through Prometheus and Grafana. The entire machine learning lifecycle, from data preprocessing to deployment, is automated to ensure efficiency and reproducibility.
+
+
+
 ## File setup ---
 
 ```
