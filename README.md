@@ -6,7 +6,7 @@ This project is an Automated Loan Approval System designed to streamline the loa
 
 The application is built as a Flask-based API for model inference and is deployed using Docker on AWS. Real-time monitoring and performance visualization are achieved through Prometheus and Grafana. The entire machine learning lifecycle, from data preprocessing to deployment, is automated to ensure efficiency and reproducibility.
 
-
+[🔗Link of the project] http://13.48.149.188/
 
 ## File setup ---
 
